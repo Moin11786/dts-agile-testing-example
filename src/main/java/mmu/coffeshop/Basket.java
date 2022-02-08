@@ -15,6 +15,7 @@ public class Basket {
 
     public void clear() {
         items.clear();
+        totalPrice = 0;
     }
 
     public Item removeItem(int index) {
