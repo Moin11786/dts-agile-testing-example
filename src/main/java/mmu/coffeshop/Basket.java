@@ -18,6 +18,8 @@ public class Basket {
     }
 
     public Item removeItem(int index) {
+        int price = items.get(index).getPrice();
+        totalPrice -= price;
         return items.remove(index);
     }
 

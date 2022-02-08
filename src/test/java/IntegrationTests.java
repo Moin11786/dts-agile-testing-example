@@ -47,6 +47,19 @@ public class IntegrationTests {
         Assert.assertEquals(0, basket.getItems().size());
     }
 
+    @Test
+    public void WhenRemoveItemThenCostOfItemIsDeductedFromTotalCostOfBasket() {
+        Basket basket = new Basket();
+        Menu mainMenu = new MainMenu(basket, new NullTextDisplay());
+        Menu addItemMenu = mainMenu.chooseOption(1);
+        mainMenu = addItemMenu.chooseOption(1);         // Coffee
+        Menu removeItemMenu = mainMenu.chooseOption(2);
+        removeItemMenu.chooseOption(1);
+
+        Assert.assertEquals(0, basket.getItemCount());
+        Assert.assertEquals(0, basket.getTotalPrice());
+    }
+
     class NullTextDisplay implements TextDisplay {
         public void displayLine(String line) {}
     }
